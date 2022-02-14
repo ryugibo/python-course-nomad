@@ -1,5 +1,10 @@
-days = ["Mon","Tue","Wed","Thu","Fri"]
-print(days)
-days.append("Sat")
-days.reverse()
-print(days)
+gibo = {
+  "name": "Gibo",
+  "age": 33,
+  "korean": True,
+  "fav_food": ["kimchi", "bread"]
+}
+
+print(gibo)
+gibo["handsome"] = True
+print(gibo)
