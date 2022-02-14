@@ -1,10 +1,6 @@
-gibo = {
-  "name": "Gibo",
-  "age": 33,
-  "korean": True,
-  "fav_food": ["kimchi", "bread"]
-}
-
-print(gibo)
-gibo["handsome"] = True
-print(gibo)
+age = "18"
+print(age)
+print(type(age))
+n_age = int(age)
+print(n_age)
+print(type(n_age))
