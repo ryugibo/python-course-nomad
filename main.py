@@ -1,5 +1,6 @@
-def say_hello(name = "anonymous"):
-  print("hello", name)
+def plus(a, b):
+  return a + b
 
-say_hello()
-say_hello("gibo")
+result = plus(2, 4)
+
+print(result)
