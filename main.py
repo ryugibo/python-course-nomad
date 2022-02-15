@@ -1,10 +1,7 @@
-days = ("Mon", "Tue", "Wed", "Thu", "Fri")
+from math import ceil, fsum as sexy_sum
+from calculator import plus, minus
 
-for day in days:
-  if day == "Wed":
-    break
-  else:
-    print(day)
+print(ceil(53.32))
+print(sexy_sum([1, 2, 3, 4, 5, 6, 7]))
 
-for letter in "ryugibo":
-  print(letter)
+print(plus(1, 4), minus(1, 4))
