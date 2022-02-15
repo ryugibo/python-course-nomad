@@ -1,11 +1,10 @@
 def is_number(a):
   if type(a) is int:
     return True
-
-  if type(a) is str and a.isdigit():
+  elif type(a) is str and a.isdigit():
     return True
-
-  return False
+  else:
+    return False
 
 def plus(a, b):
   if is_number(a) and is_number(b):
