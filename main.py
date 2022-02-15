@@ -1,16 +1,10 @@
-def age_check(age):
-  print(f"you are {age}")
-  if age < 18:
-    print("you can't drink")
-  elif age == 18:
-    print("you are new to this!")
-  elif age > 20 and age < 25:
-    print("you are still kind of young")
-  else:
-    print("enjoy your drink")
+days = ("Mon", "Tue", "Wed", "Thu", "Fri")
 
-age_check(15)
-age_check(18)
-age_check(19)
-age_check(23)
-age_check(28)
+for day in days:
+  if day == "Wed":
+    break
+  else:
+    print(day)
+
+for letter in "ryugibo":
+  print(letter)
