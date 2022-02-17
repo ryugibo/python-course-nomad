@@ -1,7 +1,6 @@
-from math import ceil, fsum as sexy_sum
-from calculator import plus, minus
+import requests
+import beautifulsoup4
 
-print(ceil(53.32))
-print(sexy_sum([1, 2, 3, 4, 5, 6, 7]))
+indeed_result = requests.get("https://www.indeed.com/jobs?q=python&limit=50")
 
-print(plus(1, 4), minus(1, 4))
+print(indeed_result.text)
