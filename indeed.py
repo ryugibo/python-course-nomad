@@ -29,6 +29,7 @@ def extract_indeed_jobs(last_page):
   for result in results:
     var += 1
     title = result.find("h2", {"class": "jobTitle"}).find("span", recursive=False)["title"]
-    print(var, ">>>", title)
+    company = result.find("span", {"class": "companyName"}).string.strip()
+    print(var, ">>>", title, " @ ", company)
 
   return jobs
