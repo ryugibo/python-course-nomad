@@ -18,18 +18,29 @@ def extract_indeed_pages():
   max_page = pages[-1]
   return max_page
 
+def extract_job(html):
+  title = html.find("h2", {"class": "jobTitle"}).find("span", recursive=False)["title"]
+  company = html.find("span", {"class": "companyName"}).string.strip()
+  location = html.find("div", {"class": "companyLocation"})
+  more_loc = location.find("span", {"class": "more_loc_container"})
+  if more_loc is not None:
+    more_loc.decompose()
+  location = location.text
+  job_id = html["data-jk"]
+  return {
+    "title": title,
+    "company": company,
+    "location": location,
+    "link": f"https://www.indeed.com/viewjob?jk={job_id}"
+  }
+  
 def extract_indeed_jobs(last_page):
   jobs = []
-  page=0
-  # for page in range(last_page):
-  result = requests.get(f"{URL}&start={page * LIMIT}")
-  soup = BeautifulSoup(result.text, 'html.parser')
-  results = soup.find_all("div", {"class": "job_seen_beacon"})
-  var = 0
-  for result in results:
-    var += 1
-    title = result.find("h2", {"class": "jobTitle"}).find("span", recursive=False)["title"]
-    company = result.find("span", {"class": "companyName"}).string.strip()
-    print(var, ">>>", title, " @ ", company)
-
+  for page in range(last_page):
+    print(f"Scraping page {page}")
+    result = requests.get(f"{URL}&start={page * LIMIT}")
+    soup = BeautifulSoup(result.text, 'html.parser')
+    results = soup.find_all("a", {"class": "result"})
+    for result in results:
+      jobs.append(extract_job(result))
   return jobs
