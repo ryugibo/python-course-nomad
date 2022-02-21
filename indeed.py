@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 LIMIT = 50
 URL = f"https://www.indeed.com/jobs?q=python&limit={LIMIT}"
 
-def extract_indeed_pages():
+def get_last_page():
   result = requests.get(URL)
   soup = BeautifulSoup(result.text, 'html.parser')
   
@@ -20,7 +20,11 @@ def extract_indeed_pages():
 
 def extract_job(html):
   title = html.find("h2", {"class": "jobTitle"}).find("span", recursive=False)["title"]
-  company = html.find("span", {"class": "companyName"}).string.strip()
+  company = html.find("span", {"class": "companyName"})
+  if company:
+    company.string.strip()
+  else:
+    company = None
   location = html.find("div", {"class": "companyLocation"})
   more_loc = location.find("span", {"class": "more_loc_container"})
   if more_loc is not None:
@@ -34,7 +38,7 @@ def extract_job(html):
     "link": f"https://www.indeed.com/viewjob?jk={job_id}"
   }
   
-def extract_indeed_jobs(last_page):
+def extract_jobs(last_page):
   jobs = []
   for page in range(last_page):
     print(f"Scraping page {page}")
@@ -44,3 +48,7 @@ def extract_indeed_jobs(last_page):
     for result in results:
       jobs.append(extract_job(result))
   return jobs
+
+def get_jobs():
+  last_page = get_last_page()
+  return extract_jobs(last_page)
