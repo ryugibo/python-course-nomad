@@ -22,7 +22,7 @@ def extract_job(html):
   title = html.find("h2", {"class": "jobTitle"}).find("span", recursive=False)["title"]
   company = html.find("span", {"class": "companyName"})
   if company:
-    company.string.strip()
+    company = company.string.strip()
   else:
     company = None
   location = html.find("div", {"class": "companyLocation"})
@@ -51,4 +51,4 @@ def extract_jobs(last_page):
 
 def get_jobs():
   last_page = get_last_page()
-  return extract_jobs(last_page)
+  return extract_jobs(1)
