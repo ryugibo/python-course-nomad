@@ -51,4 +51,4 @@ def extract_jobs(last_page):
 
 def get_jobs():
   last_page = get_last_page()
-  return extract_jobs(1)
+  return extract_jobs(last_page)
