@@ -4,13 +4,16 @@ class Car():
   windows = 4
   seats = 4
 
+  def start(self):
+    print(self, self.color)
+    print("I started")
+
+  def hello():
+    print("Hi!")
+
 porche = Car()
-print(porche)
 porche.color = "Red"
-print(porche.color)
+print(porche)
+porche.start()
 
-ferrari = Car()
-ferrari.color = "Yellow"
-
-mini = Car()
-mini.color = "White"
+Car.hello()
