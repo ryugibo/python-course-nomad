@@ -4,21 +4,21 @@ class Car():
   windows = 4
   seats = 4
 
-  def __init__(self, *args, **kwargs):
-    self.wheels
-    self.doors
-    self.windows
-    self.seats
+  def __init__(self, **kwargs):
     self.color = kwargs.get("color", "Black")
-    self.price = kwargs.get("price", "$20")
-    
+
+class Convertible(Car):
+  def __init__(self, **kwargs):
+    super().__init__(**kwargs)
+    self.time = kwargs.get("time", 10)
+
+  def take_off(self):
+    print("taking off")
+
   def __str__(self):
-    return f"Car with {self.wheels} wheels"
-    
-print(dir(Car))
+    return f"Car with no roof!"
 
-porche = Car(color = "Green", price = "$50")
+porche = Convertible(color = "Green", price = "$50")
+porche.take_off()
+print(porche)
 print(porche.color, porche.price)
-
-mini = Car()
-print(mini.color, mini.price)
