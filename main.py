@@ -4,16 +4,21 @@ class Car():
   windows = 4
   seats = 4
 
-  def start(self):
-    print(self, self.color)
-    print("I started")
+  def __init__(self, *args, **kwargs):
+    self.wheels
+    self.doors
+    self.windows
+    self.seats
+    self.color = kwargs.get("color", "Black")
+    self.price = kwargs.get("price", "$20")
+    
+  def __str__(self):
+    return f"Car with {self.wheels} wheels"
+    
+print(dir(Car))
 
-  def hello():
-    print("Hi!")
+porche = Car(color = "Green", price = "$50")
+print(porche.color, porche.price)
 
-porche = Car()
-porche.color = "Red"
-print(porche)
-porche.start()
-
-Car.hello()
+mini = Car()
+print(mini.color, mini.price)
