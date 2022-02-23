@@ -1,24 +1,16 @@
-# from indeed import get_jobs as get_indeed_jobs
-# from so import get_jobs as get_so_jobs
-# from save import save_to_file
+class Car():
+  wheels = 4
+  doors = 4
+  windows = 4
+  seats = 4
 
-# indeed_jobs = get_indeed_jobs()
-# so_jobs = get_so_jobs()
-# jobs = indeed_jobs + so_jobs
-# save_to_file(jobs)
+porche = Car()
+print(porche)
+porche.color = "Red"
+print(porche.color)
 
-def plus(*args):
-  result = 0
-  for number in args:
-    result += number
-  return result
+ferrari = Car()
+ferrari.color = "Yellow"
 
-def key_plus(**kargs):
-  result = 0
-  for key in kargs:
-    print(key, kargs[key])
-    result += kargs[key]
-  return result
-
-print(plus(1, 2, 3, 4, 5, 6, 7, 8, 9))
-print(key_plus(a = 15, b = 55))
+mini = Car()
+mini.color = "White"
